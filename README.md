@@ -10,15 +10,14 @@ bs4
 
 ### 运行：
 
-1. 将cookie复制到`get_lesson.py`中，运行，生成`cls2.json`
-
-2. 运行`main.py`，生成`example2.ics`文件
-3. 安卓系统可以直接打开，检查没什么大问题之后，便可导入日程。IOS需要使用邮件功能，将ics文件发送到ios系统中**邮件**中绑定的邮箱，从邮箱中打开附件的ics文件，即可导入。
+复制cookie到main.py的主函数中，运行。或者用已经生成的本地json文件运行。
 
 
 
 ### Note
 
-1. `main.py`中ref是参考的ics格式，可忽略；`tz_utc_8 = timezone(timedelta(hours=8))`表示的北京时间
-2. `main.py`中设置`time.sleep(0.1)`是因为在一些格式要求严格的系统中，ics的**UID**要保证唯一性
-3. 小米、VIVO经测试不可导入，因为厂商阉割了此功能。
+1. `ref.ics`是参考的ics文件格式
+2. `tz_utc_8 = timezone(timedelta(hours=8))`表示的北京时间
+3. uuid是为了让UID唯一
+4. 小米、VIVO经测试不可导入，因为厂商阉割了此功能；魅族、荣耀、三星、苹果均可导入
+5. `begin_year`、`begin_month`、`begin_day`表示一个学期开始的年月日
