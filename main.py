@@ -49,7 +49,7 @@ def cread_event(lesson_name, classroom, teacher, start, end, freq=None):
     return event
 
 
-def init_event(count, begin_week, lesson, freq=None):
+def init_event(cal, count, begin_week, lesson, freq=None):
     # 学期开始的第一个礼拜每天的日期
     begin_date = datetime(begin_year, begin_month,
                           begin_day) + timedelta(days=count)
@@ -220,11 +220,11 @@ if __name__ == '__main__':
                 begin_week, end_week = lesson['week'].split('-')
                 freq = {'freq': 'weekly', 'count': int(
                     end_week) - int(begin_week) + 1}
-                init_event(count, begin_week, lesson, freq)
+                init_event(cal, count, begin_week, lesson, freq)
             else:
                 week_lst = get_week_lst(lesson)
                 for week in week_lst:
-                    init_event(count, week, lesson)
+                    init_event(cal, count, week, lesson)
         count += 1
 
     with open('{}.ics'.format(fname), 'wb') as f:
