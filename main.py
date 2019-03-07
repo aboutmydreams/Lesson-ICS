@@ -7,7 +7,6 @@ import re
 import time
 import requests
 import uuid
-import cut
 
 # 设定时区
 tz_utc_8 = timezone(timedelta(hours=8))
@@ -202,8 +201,7 @@ def get_lessons(cookie, f_json):
 if __name__ == '__main__':
     fname = 'cls2'
     f_json = '{}.json'.format(fname)
-    # 你的 cookie 或用户名密码
-    cookie = cut.get_cookie(username,password)
+    cookie = cookie
     # 发起网络请求
     cls_json = get_lessons(cookie, f_json)
 
