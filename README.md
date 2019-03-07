@@ -6,6 +6,11 @@
 requests
 icalendar
 bs4
+numpy
+pandas
+Pillow
+pyexecjs
+
 ```
 
 ### 运行：
@@ -21,3 +26,19 @@ bs4
 3. uuid是为了让UID唯一
 4. 小米、VIVO经测试不可导入，因为厂商阉割了此功能；魅族、荣耀、三星、苹果均可导入
 5. `begin_year`、`begin_month`、`begin_day`表示一个学期开始的年月日
+
+### 验证码识别
+
+https://www.yuque.com/zhiwa/deepin/leiod0
+
+### 我们还可以做什么
+
+* 课表（/提前）查询
+* 空闲教室
+* 查看成绩
+* 课程执行计划
+* 考过的四六级成绩
+* 选课
+* 评教
+* 毕设选题
+
