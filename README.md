@@ -30,6 +30,7 @@ pyexecjs
 ### 验证码识别
 
 https://www.yuque.com/zhiwa/deepin/leiod0
+目前识别率78% 还有缺陷 错误可以多试几次，当然也可以改下直到正确为止。
 
 ### 我们还可以做什么
 
