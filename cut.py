@@ -26,23 +26,18 @@ def trans_id(username, password):
     jsfile = 'encodeInp.js'
     ctx = node.compile(open(jsfile).read())
     # 原 JS 函数名 为 encodeInp()
-    user = 'encodeInp("{}")'.format(username)
-    pwd = 'encodeInp("{}")'.format(password)
-    # 网页向后端 POST 的格式
-    result = '{}%%%{}'.format(str(ctx.eval(user)), str(ctx.eval(pwd)))
-    return result
+    user = f'encodeInp("{username}")'
+    pwd = f'encodeInp("{password}")'
+    return f'{str(ctx.eval(user))}%%%{str(ctx.eval(pwd))}'
 
 
 # 识别验证码
 def get_captcha(img):
     # 导入模型名称
     def get_fname():
-        name_list = []
         path = 'mode/'
         dirs = os.listdir(path)
-        for dir in dirs:
-            name_list.append(dir)
-        return name_list
+        return list(dirs)
     # 灰度化 切割 转化为数组模型
     img = img.convert('L')
     box1 = (4, 4, 12, 16)
@@ -82,7 +77,7 @@ def get_cookie(username, password):
     img = Image.open(BytesIO(response.content))
     # img.show()
     cookies = requests.utils.dict_from_cookiejar(response.cookies)
-    cookies = 'JSESSIONID={};SERVERID={}'.format(cookies['JSESSIONID'],cookies['SERVERID'])
+    cookies = f"JSESSIONID={cookies['JSESSIONID']};SERVERID={cookies['SERVERID']}"
     post_url = 'http://jwc104.ncu.edu.cn:8081/jsxsd/xk/LoginToXk'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
@@ -108,7 +103,7 @@ def get_cookie(username, password):
 # 测试识别率 2次都是78%
 def test():
     n=0
-    for i in range(100):
+    for _ in range(100):
         a = get_cookie('123123', '123123')
         if '验证' not in a:
             n+=1
